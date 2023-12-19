@@ -3,16 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { AuthenticationService } from './services/authentication.service';
+import { VerificationComponent } from './pages/verification/verification.component';
+import { LoaderComponent } from './loader/loader.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    WelcomeComponent,
+    VerificationComponent,
+    LoaderComponent,
+    ForgotPasswordComponent,
+    UpdatePasswordComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  providers: [HttpClient, AuthenticationService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

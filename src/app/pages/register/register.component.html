@@ -1,0 +1,212 @@
+<section class="vh-100" style="background-color: #eee">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"></p>
+
+                <form class="form" (ngSubmit)="registerUser()">
+                  <p class="title">Register</p>
+                  <p class="message">
+                    Signup now and get full access to our app.
+                  </p>
+                  <div class="flex">
+                    <label>
+                      <input
+                        required=""
+                        placeholder=""
+                        type="text"
+                        class="input"
+                        [(ngModel)]="registerRequest.firstName"
+                        name="firstName"
+                      />
+                      <span>First Name</span>
+                    </label>
+
+                    <label>
+                      <input
+                        required=""
+                        placeholder=""
+                        type="text"
+                        class="input"
+                        [(ngModel)]="registerRequest.secondName"
+                        name="secondName"
+                      />
+                      <span>Second Name</span>
+                    </label>
+                  </div>
+
+                  <label>
+                    <input
+                      required=""
+                      placeholder=""
+                      type="username"
+                      class="input"
+                      [(ngModel)]="registerRequest.username"
+                      name="username"
+                    />
+                    <span>Username</span>
+                  </label>
+
+                  <label>
+                    <input
+                      required=""
+                      placeholder=""
+                      type="whatsappNumber"
+                      class="input"
+                      [(ngModel)]="registerRequest.whatsappNumber"
+                      name="whatsappNumber"
+                    />
+                    <span>Whatsapp Number</span>
+                  </label>
+
+                  <div class="flex">
+                    <label>
+                      <span>Church</span>
+                      <select
+                        required=""
+                        class="input"
+                        [(ngModel)]="registerRequest.churchName"
+                        name="churchName"
+                      >
+                        <option value="" disabled selected hidden>
+                          Select Church Name
+                        </option>
+                        <option
+                          *ngFor="let church of availableChurchNames"
+                          [ngValue]="church.churchName"
+                        >
+                          {{ church.churchName }}
+                        </option>
+                      </select>
+                    </label>
+
+                    <label>
+                      <span>Gender</span>
+                      <select
+                        required=""
+                        class="input"
+                        [(ngModel)]="registerRequest.gender"
+                        name="gender"
+                      >
+                        <option value="" disabled selected hidden>
+                          Select Gender
+                        </option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <div class="flex">
+                    <label>
+                      <span>Province</span>
+                      <select
+                        required=""
+                        class="input"
+                        [(ngModel)]="registerRequest.province"
+                        name="province"
+                      >
+                        <option value="" disabled selected hidden>
+                          Select Province
+                        </option>
+                        <option
+                          *ngFor="let province of availableProvinces"
+                          [ngValue]="province.province"
+                        >
+                          {{ province.province }}
+                        </option>
+                      </select>
+                    </label>
+
+                    <label>
+                      <span>ZionType</span>
+                      <select
+                        required=""
+                        class="input"
+                        [(ngModel)]="registerRequest.zionType"
+                        name="zionType"
+                      >
+                        <option value="" disabled selected hidden>
+                          Select Zion Type
+                        </option>
+                        <option value="Sgege">Sgege</option>
+                        <option value="Chorus">Chorus</option>
+                        <option value="Khalanga">Khalanga</option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <label *ngIf="registerRequest.churchName === 'NOT_AVAILABLE'">
+                    <input
+                      required=""
+                      placeholder=""
+                      type="enterChurchName"
+                      class="input"
+                      [(ngModel)]="registerRequest.enterChurchName"
+                      name="enterChurchName"
+                    />
+                    <span>Enter Church Name</span>
+                  </label>
+
+                  <label>
+                    <input
+                      required=""
+                      placeholder=""
+                      type="email"
+                      class="input"
+                      [(ngModel)]="registerRequest.email"
+                      name="email"
+                    />
+                    <span>Email</span>
+                  </label>
+
+                  <label>
+                    <input
+                      required=""
+                      placeholder=""
+                      type="password"
+                      class="input"
+                      [(ngModel)]="registerRequest.password"
+                      name="password"
+                    />
+                    <span>Password</span>
+                  </label>
+                  <label>
+                    <input
+                      required=""
+                      placeholder=""
+                      type="password"
+                      class="input"
+                      [(ngModel)]="registerRequest.confirmPassword"
+                      name="confirmPassword"
+                    />
+                    <span>Confirm password</span>
+                  </label>
+                  <form class="form" (ngSubmit)="registerUser()">
+                    <button class="submit">Register</button>
+                  </form>
+                  <p class="signin">
+                    Already have an account? <a routerLink="/login">login</a>
+                  </p>
+                </form>
+              </div>
+              <div
+                class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+              >
+                <img
+                  src="http://drive.google.com/uc?export=view&id=1IQHkkTPFD9drMj4ztjyDbJ6HybTyK4s9"
+                  class="img-fluid"
+                  alt="Sample image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
