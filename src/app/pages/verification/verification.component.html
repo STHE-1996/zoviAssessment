@@ -21,6 +21,8 @@
                       [(ngModel)]="enteredPin[0]"
                       name="input1"
                       required
+                      (input)="handleInput($event, 0)"
+                      (paste)="handlePaste($event, 0)"
                     />
                     <input
                       id="input2"
@@ -29,6 +31,8 @@
                       [(ngModel)]="enteredPin[1]"
                       name="input2"
                       required
+                      (input)="handleInput($event, 1)"
+                      (paste)="handlePaste($event, 1)"
                     />
                     <input
                       id="input3"
@@ -37,6 +41,8 @@
                       [(ngModel)]="enteredPin[2]"
                       name="input3"
                       required
+                      (input)="handleInput($event, 2)"
+                      (paste)="handlePaste($event, 2)"
                     />
                     <input
                       id="input4"
@@ -45,6 +51,8 @@
                       [(ngModel)]="enteredPin[3]"
                       name="input4"
                       required
+                      (input)="handleInput($event, 3)"
+                      (paste)="handlePaste($event, 3)"
                     />
                     <input
                       id="input5"
@@ -53,6 +61,8 @@
                       [(ngModel)]="enteredPin[4]"
                       name="input5"
                       required
+                      (input)="handleInput($event, 4)"
+                      (paste)="handlePaste($event, 4)"
                     />
                   </div>
 

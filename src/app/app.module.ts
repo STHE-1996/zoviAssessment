@@ -13,6 +13,7 @@ import { VerificationComponent } from './pages/verification/verification.compone
 import { LoaderComponent } from './loader/loader.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
     LoaderComponent,
     ForgotPasswordComponent,
     UpdatePasswordComponent,
+    ProfileComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [HttpClient, AuthenticationService],
