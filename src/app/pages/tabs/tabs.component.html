@@ -1,0 +1,130 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css"
+  integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-8">
+      <div class="card">
+        <div class="card-body pb-0">
+          <div class="row align-items-center">
+            <div class="col-md-3">
+              <div class="text-center border-end">
+                <img
+                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                  class="img-fluid avatar-xxl rounded-circle"
+                  alt=""
+                />
+                <h4 class="text-primary font-size-20 mt-3 mb-2">Jansh Wells</h4>
+                <h5 class="text-muted font-size-13 mb-0">Web Designer</h5>
+              </div>
+            </div>
+            <!-- end col -->
+            <div class="col-md-9">
+              <div class="ms-3">
+                <div>
+                  <h4 class="card-title mb-2">Biography</h4>
+                  <p class="mb-0 text-muted">
+                    Hi I'm Jansh,has been the industry's standard dummy text To
+                    an English person alteration text.
+                  </p>
+                </div>
+                <div class="row my-4">
+                  <div class="col-md-12">
+                    <div>
+                      <p class="text-muted mb-2 fw-medium">
+                        <i class="mdi mdi-email-outline me-2"></i
+                        >Janshwells@probic.com
+                      </p>
+                      <p class="text-muted fw-medium mb-0">
+                        <i class="mdi mdi-phone-in-talk-outline me-2"></i
+                        >418-955-4703
+                      </p>
+                    </div>
+                  </div>
+                  <!-- end col -->
+                </div>
+                <!-- end row -->
+
+                <ul
+                  class="nav nav-tabs nav-tabs-custom border-bottom-0 mt-3 nav-justified"
+                  role="tablist"
+                >
+                  <li class="nav-item" role="presentation">
+                    <a
+                      class="nav-link px-4"
+                      (click)="selectTab('projects')"
+                      [class.active]="activeTab === 'projects'"
+                    >
+                      <span class="d-block d-sm-none"
+                        ><i class="fas fa-home"></i
+                      ></span>
+                      <span class="d-none d-sm-block">Projects</span>
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a
+                      class="nav-link px-4"
+                      (click)="selectTab('tasks')"
+                      [class.active]="activeTab === 'tasks'"
+                    >
+                      <span class="d-block d-sm-none"
+                        ><i class="mdi mdi-menu-open"></i
+                      ></span>
+                      <span class="d-none d-sm-block">Tasks</span>
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a
+                      class="nav-link px-4"
+                      (click)="selectTab('team')"
+                      [class.active]="activeTab === 'team'"
+                    >
+                      <span class="d-block d-sm-none"
+                        ><i class="mdi mdi-account-group-outline"></i
+                      ></span>
+                      <span class="d-none d-sm-block">Team</span>
+                    </a>
+                  </li>
+                </ul>
+
+                <!-- end ul -->
+              </div>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end card body -->
+      </div>
+      <!-- end card -->
+
+      <div class="card">
+        <div class="tab-content p-4">
+          <div
+            class="tab-pane"
+            *ngIf="activeTab === 'projects'"
+            role="tabpanel"
+          >
+            <!-- Content for Projects tab -->
+            <h4>Projects Content</h4>
+            <p>Project: Sthe</p>
+          </div>
+          <div class="tab-pane" *ngIf="activeTab === 'tasks'" role="tabpanel">
+            <!-- Content for Tasks tab -->
+            <h4>Tasks Content</h4>
+            <p>Task: Mlondi</p>
+          </div>
+          <div class="tab-pane fade" *ngIf="activeTab === 'team'" role="tabpanel">
+            <!-- Content for Team tab -->
+            <h4>Team Content</h4>
+            <p>Team: Thobelani</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

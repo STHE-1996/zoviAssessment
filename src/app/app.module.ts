@@ -14,6 +14,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { TabsComponent } from './pages/tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     ForgotPasswordComponent,
     UpdatePasswordComponent,
     ProfileComponent,
+    TabsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [HttpClient, AuthenticationService],

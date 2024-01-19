@@ -8,6 +8,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { TabsComponent } from './pages/tabs/tabs.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+  },
+
+  {
+    path: 'tabs',
+    component: TabsComponent,
   },
 ];
 
