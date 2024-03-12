@@ -6,9 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./tabs.component.css'],
 })
 export class TabsComponent {
-  activeTab: string = 'projects';
-
-  selectTab(tab: string) {
-    this.activeTab = tab;
-  }
+  
 }

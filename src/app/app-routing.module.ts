@@ -9,6 +9,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TabsComponent } from './pages/tabs/tabs.component';
+import { InvitationComponent } from './pages/invitation/invitation.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,9 @@ const routes: Routes = [
     path: 'verification',
     component: VerificationComponent,
   },
+
+  { path: 'welcome/:userId',
+   component: WelcomeComponent },
 
   {
     path: 'loader',
@@ -55,6 +59,16 @@ const routes: Routes = [
     path: 'tabs',
     component: TabsComponent,
   },
+
+  {
+      path: 'invitation',
+      component: InvitationComponent,
+  },
+
+
+
+  { path: 'profile/:userId', 
+   component: ProfileComponent }
 ];
 
 @NgModule({

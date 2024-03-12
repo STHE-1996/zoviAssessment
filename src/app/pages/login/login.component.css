@@ -1,11 +1,16 @@
 .form-container {
   width: 350px;
   height: 500px;
-  background-color: #fff;
+  background-color: rgba(10, 238, 227, 0.171);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
+  border:2px solid rgb(1, 235, 252) ;
   box-sizing: border-box;
   padding: 20px 30px;
+}
+
+.card{
+  border: rgb(1, 235, 252) ;
 }
 
 .title {
@@ -60,7 +65,7 @@
   border-radius: 20px;
   border: 0 !important;
   outline: 0 !important;
-  background: royalblue;
+  background-color: rgb(1, 235, 252);
   color: white;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

@@ -187,7 +187,10 @@
                     <span>Confirm password</span>
                   </label>
                   <form class="form" (ngSubmit)="registerUser()">
-                    <button class="submit">Register</button>
+                    <button class="submit" [disabled]="loading">
+                      <span *ngIf="!loading">Register</span>
+                      <app-loader [loading]="loading"></app-loader>
+                    </button>
                   </form>
                   <p class="signin">
                     Already have an account? <a routerLink="/login">login</a>
@@ -197,11 +200,7 @@
               <div
                 class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
               >
-                <img
-                  src="http://drive.google.com/uc?export=view&id=1IQHkkTPFD9drMj4ztjyDbJ6HybTyK4s9"
-                  class="img-fluid"
-                  alt="Sample image"
-                />
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/u02fUMjp0a8?si=erIH800JHJTNZ_sy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
               </div>
             </div>
           </div>

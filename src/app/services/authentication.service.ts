@@ -10,18 +10,23 @@ import {
   LoginRequest,
   Province,
   RegisterRequest,
+  Post,
+  UserDetails,
 } from '../models/register-request';
 import {
   AuthenticationResponse,
   ForgotPasswordResponse,
 } from '../models/authentication-response';
-import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   private baseUrl = 'http://localhost:8082/api';
+  private isAuthenticationSubject = new BehaviorSubject<boolean>(false);
+
+ 
 
   constructor(private http: HttpClient) {}
 
@@ -72,7 +77,7 @@ export class AuthenticationService {
       'Content-Type': 'application/json',
     });
 
-    return this.http
+        return this.http
       .post(`${this.baseUrl}/Login`, credentials, { headers: headers })
       .pipe(
         catchError((error) => {
@@ -121,5 +126,36 @@ export class AuthenticationService {
         }),
         map((response: any) => response && response.responseMessage)
       );
+  }
+
+
+  getUserDetails(userId: string): Observable<UserDetails> {
+    const url = `${this.baseUrl}/${userId}`;
+    return this.http.get<UserDetails>(url);
+  }
+
+  getPosts(): Observable<Post[]> {
+    const url = `${this.baseUrl}/Time_Line_Post`;
+    return this.http.get<Post[]>(url);
+  }
+
+
+
+  private userId: string | null = null;
+
+  setUserId(userId: string): void {
+    this.userId = userId;
+  }
+
+  getUserId(): string | null {
+    return this.userId;
+  }
+
+  clearUserId(): void {
+    this.userId = null;
+  }
+
+  getChurchMembers(id: string): Observable<UserDetails[]> {
+    return this.http.get<UserDetails[]>(`${this.baseUrl}/ChurchMembers/${id}`);
   }
 }

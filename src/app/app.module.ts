@@ -15,6 +15,11 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TabsComponent } from './pages/tabs/tabs.component';
+import { UploadService } from './services/profile/upload.service';
+import { InvitationComponent } from './pages/invitation/invitation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
@@ -28,9 +33,12 @@ import { TabsComponent } from './pages/tabs/tabs.component';
     UpdatePasswordComponent,
     ProfileComponent,
     TabsComponent,
+    InvitationComponent,
+    
+    
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [HttpClient, AuthenticationService],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,BrowserAnimationsModule,MatSidenavModule],
+  providers: [HttpClient, AuthenticationService,UploadService, ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

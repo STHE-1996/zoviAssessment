@@ -3,7 +3,8 @@
   flex-direction: column;
   gap: 10px;
   max-width: 350px;
-  background-color: #fff;
+  background-color: rgba(10, 238, 227, 0.171);
+  border:2px solid rgb(1, 235, 252);
   padding: 20px;
   border-radius: 20px;
   position: relative;
@@ -28,13 +29,14 @@
   width: 16px;
   border-radius: 50%;
   left: 0px;
-  background-color: royalblue;
+  background-color: rgb(1, 235, 252);
+  
 }
 
 .title::before {
   width: 18px;
   height: 18px;
-  background-color: royalblue;
+  background-color: rgb(1, 235, 252);
 }
 
 .title::after {
@@ -54,11 +56,11 @@
 }
 
 .signin a {
-  color: royalblue;
+  color: rgb(1, 235, 252);
 }
 
 .signin a:hover {
-  text-decoration: underline royalblue;
+  text-decoration: underline rgb(1, 235, 252);
 }
 
 .flex {
@@ -102,13 +104,13 @@
 }
 
 .form label .input:valid + span {
-  color: green;
+  color: rgb(1, 235, 252);
 }
 
 .submit {
   border: none;
   outline: none;
-  background-color: royalblue;
+  background-color: rgb(1, 235, 252);
   padding: 10px;
   border-radius: 10px;
   color: #fff;
@@ -117,7 +119,7 @@
 }
 
 .submit:hover {
-  background-color: rgb(56, 90, 194);
+  background-color: rgb(58, 56, 54);
 }
 
 @keyframes pulse {

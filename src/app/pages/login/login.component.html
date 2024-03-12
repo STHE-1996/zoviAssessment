@@ -10,20 +10,20 @@
 
                 <div class="form-container">
                   <p class="title">Welcome back</p>
-                  <form
-                    class="form"
-                    (ngSubmit)="onSubmit()"
-                    #loginForm="ngForm"
-                  >
+                  <form class="form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
                     <input
-                      type="email"
-                      [(ngModel)]="credentials.whatsappNumber"
-                      required
-                      class="input"
-                      placeholder="Enter email"
-                    />
-                    <input
+                        type="text"
+                        id="whatsappNumber"
+                        name="whatsappNumber"
+                        [(ngModel)]="credentials.whatsappNumber"
+                        required
+                        class="input"
+                        placeholder="Enter WhatsApp Number"
+                      />
+                      <input
                       type="password"
+                      id="password"
+                      name="password"
                       [(ngModel)]="credentials.password"
                       required
                       class="input"
@@ -34,8 +34,17 @@
                         <a routerLink="/forgotPassword">Forgot Password?</a>
                       </span>
                     </p>
-                    <button class="form-btn" type="submit">Log in</button>
+                    <button class="form-btn" type="submit" [disabled]="loading">
+                      <ng-container *ngIf="!loading; else loader">
+                        Log in
+                      </ng-container>
+                      <ng-template #loader>
+                        <app-loader [loading]="loading"></app-loader>
+                      </ng-template>
+                    </button>
+                    
                   </form>
+                  
                   <p class="sign-up-label">
                     Don't have an account?<span class="sign-up-link">
                       <a routerLink="/register">Sign up</a>
@@ -47,7 +56,7 @@
                 class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
               >
                 <img
-                  src="http://drive.google.com/uc?export=view&id=1IQHkkTPFD9drMj4ztjyDbJ6HybTyK4s9"
+                  src="https://firebasestorage.googleapis.com/v0/b/ziontimeline.appspot.com/o/Untitled%20design.jpg?alt=media&token=dc16782d-758c-4ce6-8aad-327879cd8b67"
                   class="img-fluid"
                   alt="Sample image"
                 />

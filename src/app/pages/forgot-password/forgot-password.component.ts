@@ -15,7 +15,10 @@ export class ForgotPasswordComponent {
     this.selectedChannel = '';
   }
 
+  loading: boolean = false;
+
   sendOTP() {
+    this.loading = true;
     // Assuming you have proper validation for the username and channel
     if (this.username && this.selectedChannel) {
       // Call the service to send OTP
@@ -33,10 +36,13 @@ export class ForgotPasswordComponent {
               (error.message || 'An unexpected error occurred.')
           );
         }
-      );
+        ).add(() => {
+          this.loading = false; // Set loading to false after the transaction
+        });
     } else {
       // Handle validation error, show a message to the user
       alert('Please enter a valid username and select a channel.');
+      this.loading = false;
     }
   }
 }

@@ -15,11 +15,14 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+
+ 
+
   registerRequest: RegisterRequest = {};
 
   availableProvinces: Province[] = [];
   availableChurchNames: ChurchName[] = [];
-  @ViewChild('loader') loader!: LoaderComponent;
+
   constructor(
     private authService: AuthenticationService,
     private router: Router
@@ -51,25 +54,18 @@ export class RegisterComponent implements OnInit {
       this.registerRequest.enterChurchName = ''; // Clear the value
     }
   }
+  loading: boolean = false;
 
   registerUser() {
-    if (this.loader) {
-      this.loader.show();
-    }
+    this.loading = true; // Set loading to true before making the API call
 
     this.authService.register(this.registerRequest).subscribe(
       (response) => {
-        if (this.loader) {
-          this.loader.hide();
-        }
         // Handle successful registration response
         alert(response.responseMessage);
         this.router.navigate(['/verification']);
       },
       (error) => {
-        if (this.loader) {
-          this.loader.hide();
-        }
         // Handle registration error
         console.error('Registration error', error);
 
@@ -81,6 +77,9 @@ export class RegisterComponent implements OnInit {
           alert('Sorry: ' + error.error.message);
         }
       }
-    );
+    ).add(() => {
+      this.loading = false; // Set loading to false when the API call is complete
+    });
   }
 }
+

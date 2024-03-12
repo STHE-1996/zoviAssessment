@@ -3,8 +3,9 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  width: 300px;
-  background-color: white;
+  width: 350px;
+  background-color: rgba(10, 238, 227, 0.171);
+  border: 2px solid rgb(1, 235, 252);
   border-radius: 12px;
   padding: 20px;
 }
@@ -36,7 +37,8 @@
 }
 
 .inputs input:focus {
-  border-bottom: 1.5px solid royalblue;
+  border-bottom: 1.5px solidrgb(1, 235, 252);
+ 
   outline: none;
 }
 
@@ -45,7 +47,7 @@
   padding: 12px 16px;
   border-radius: 8px;
   border: none;
-  background-color: royalblue;
+  background-color: rgb(1, 235, 252);
   color: white;
   cursor: pointer;
   align-self: end;
@@ -56,3 +58,18 @@
   font-weight: bold;
   margin-top: 10px;
 }
+
+@media (max-width: 768px) {
+  .collapse-image {
+    display: none; /* Hide the image on smaller screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .col-md-10 {
+    max-width: 100%; /* Allow the form to take full width on smaller screens */
+  }
+}
+
+
+
