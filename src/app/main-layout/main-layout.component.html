@@ -12,7 +12,7 @@
           </li>
           <li><a routerLink="/dash">Dashboard</a></li>
           
-          <li><a routerLink="/waste">Create Waste</a></li>
+          <li *ngIf="isIndividualAndBusiness()"><a routerLink="/waste">Create Waste</a></li>
 
           <li *ngIf="isWasteManagementStaff()"><a routerLink="/recycling">Create Location</a></li>
 

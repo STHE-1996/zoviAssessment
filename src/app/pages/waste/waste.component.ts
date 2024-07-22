@@ -57,6 +57,7 @@ export class WasteComponent {
     this.wasteService.createWaste(wasteRequest).subscribe(
       response => {
         console.log('Waste record created successfully', response);
+        
       },
       error => {
         console.error('Error creating waste record', error);

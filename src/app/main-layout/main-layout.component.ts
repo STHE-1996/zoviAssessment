@@ -11,5 +11,12 @@ export class MainLayoutComponent {
     const role = localStorage.getItem('role');
     return role === 'waste_management_staff';
   }
+
+  isIndividualAndBusiness(): boolean {
+    const role = localStorage.getItem('role');
+    return role === 'residents' || role === 'businesses';
+  }
+  
+ 
   
 }
