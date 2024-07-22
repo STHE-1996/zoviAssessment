@@ -8,6 +8,7 @@ import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { WasteComponent } from './pages/waste/waste.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RecyclingLocationComponent } from './pages/recycling-location/recycling-location.component';
+import { RoleGuard } from './guards/role.guard';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
       { path: 'dash', component: DashComponentimplements },
       { path: 'waste', component: WasteComponent },
       { path: 'profile', component: ProfileComponent },
-      {path:'recycling', component: RecyclingLocationComponent},
+      {path:'recycling', component: RecyclingLocationComponent, canActivate: [RoleGuard],
+        data: { expectedRole: 'waste_management_staff' }},
       { path: '', redirectTo: 'dash', pathMatch: 'full' } // Redirect root to dash within MainLayout
     ]
   },

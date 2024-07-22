@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class MainLayoutComponent {
 
+  isWasteManagementStaff(): boolean {
+    const role = localStorage.getItem('role');
+    return role === 'waste_management_staff';
+  }
+  
 }

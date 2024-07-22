@@ -23,17 +23,17 @@ export class DashComponentimplements implements AfterViewInit {
       new Chart(ctx2, {
           type: 'bar',
           data: {
-              labels: ['Stage1', 'Stage2', 'Stage3', 'Stage4', 'Stage5', 'Stage6'],
+              labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saterday'],
               datasets: [
                   {
-                      label: 'Cash Flow',
+                      label: 'Picked ',
                       data: [65, 59, 80, 81, 56, 55],
                       backgroundColor: 'rgba(10, 238, 227, 0.171)',
                       borderColor: 'rgba(0, 0, 62, 0.8)',
                       borderWidth: 1
                   },
                   {
-                      label: 'Expenditure',
+                      label: ' Not Picked',
                       data: [55, 50, 70, 71, 46, 45],
                       backgroundColor: 'rgb(1, 235, 252)',
                       borderColor: 'rgba(126, 3, 17, 0.8)',
@@ -58,7 +58,7 @@ export class DashComponentimplements implements AfterViewInit {
                   },
                   title: {
                       display: true,
-                      text: 'PROJECT CASHFLOW VS EXPENDITURE'
+                      text: 'Picked vs. Not Picked'
                   }
               }
           }

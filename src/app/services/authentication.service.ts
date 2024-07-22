@@ -65,6 +65,8 @@ export class AuthenticationService {
         map((response: any) => {
           if (response.responseCode === '200') {
             const token = response.data;
+            const role = response.role;
+            localStorage.setItem('role', role);
             localStorage.setItem('token', token);
             const userId = this.jwtHelper.getUserIdFromToken(token) || '';
             localStorage.setItem('userId', userId);
