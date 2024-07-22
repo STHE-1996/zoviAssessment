@@ -9,7 +9,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  credentials: LoginRequest = { whatsappNumber: '', password: '' };
+  credentials: LoginRequest = { email: '', password: '' };
 
   constructor(private authService: AuthenticationService, private router: Router) {}
 
@@ -21,27 +21,13 @@ export class LoginComponent {
   
     this.authService.login(this.credentials).subscribe(
       (response: any) => {
-        // Handle successful login response
-        console.log('Login successful', response);
-  
-        const userId = response.data;
-  
-        this.authService.setUserId(userId);
-  
-        this.router.navigate(['/profile', userId]);
-  
-        // Consider using a toast or notification service instead of alert
-        alert(response.responseMessage);
       },
       (error: any) => {
-        // Handle login error
         console.error('Login error', error);
-        // Add additional error handling as needed
       }
     ).add(() => {
-      this.loading = false; // Set loading to false when the API call is complete
+      this.loading = false;
     });
   }
-  
 }
 

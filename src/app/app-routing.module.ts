@@ -1,74 +1,35 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { VerificationComponent } from './pages/verification/verification.component';
-import { LoaderComponent } from './loader/loader.component';
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { DashComponentimplements } from './pages/dash/dash.component';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { LoginLayoutComponent } from './login-layout/login-layout.component';
+import { WasteComponent } from './pages/waste/waste.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { TabsComponent } from './pages/tabs/tabs.component';
-import { InvitationComponent } from './pages/invitation/invitation.component';
+
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent,
+    path: '',
+    component: LoginLayoutComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: '', redirectTo: 'login', pathMatch: 'full' } // Redirect root to login
+    ]
   },
-
   {
-    path: 'register',
-    component: RegisterComponent,
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      { path: 'dash', component: DashComponentimplements },
+      { path: 'waste', component: WasteComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: '', redirectTo: 'dash', pathMatch: 'full' } // Redirect root to dash within MainLayout
+    ]
   },
-
-  {
-    path: 'welcome',
-    component: WelcomeComponent,
-  },
-
-  {
-    path: 'verification',
-    component: VerificationComponent,
-  },
-
-  { path: 'welcome/:userId',
-   component: WelcomeComponent },
-
-  {
-    path: 'loader',
-    component: LoaderComponent,
-  },
-
-  {
-    path: 'forgotPassword',
-    component: ForgotPasswordComponent,
-  },
-
-  {
-    path: 'updatePassword',
-    component: UpdatePasswordComponent,
-  },
-
-  {
-    path: 'profile',
-    component: ProfileComponent,
-  },
-
-  {
-    path: 'tabs',
-    component: TabsComponent,
-  },
-
-  {
-      path: 'invitation',
-      component: InvitationComponent,
-  },
-
-
-
-  { path: 'profile/:userId', 
-   component: ProfileComponent }
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({

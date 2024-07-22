@@ -5,20 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from './services/authentication.service';
-import { VerificationComponent } from './pages/verification/verification.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { TabsComponent } from './pages/tabs/tabs.component';
+
 import { UploadService } from './services/profile/upload.service';
-import { InvitationComponent } from './pages/invitation/invitation.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { LoginLayoutComponent } from './login-layout/login-layout.component';
+import { WasteComponent } from './pages/waste/waste.component';
+import { AuthInterceptor } from './auth.interceptor';
+import { ProfileComponent } from './pages/profile/profile.component';
+
 
 
 @NgModule({
@@ -26,19 +30,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    WelcomeComponent,
-    VerificationComponent,
     LoaderComponent,
     ForgotPasswordComponent,
     UpdatePasswordComponent,
+    MainLayoutComponent,
+    LoginLayoutComponent,
+    WasteComponent,
     ProfileComponent,
-    TabsComponent,
-    InvitationComponent,
-    
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,BrowserAnimationsModule,MatSidenavModule],
-  providers: [HttpClient, AuthenticationService,UploadService, ],
+  providers: [HttpClient, AuthenticationService,UploadService,  AuthInterceptor],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

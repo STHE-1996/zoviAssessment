@@ -20,7 +20,7 @@
                         placeholder=""
                         type="text"
                         class="input"
-                        [(ngModel)]="registerRequest.firstName"
+                        [(ngModel)]="registerRequest.name"
                         name="firstName"
                       />
                       <span>First Name</span>
@@ -32,57 +32,31 @@
                         placeholder=""
                         type="text"
                         class="input"
-                        [(ngModel)]="registerRequest.secondName"
+                        [(ngModel)]="registerRequest.surname"
                         name="secondName"
                       />
                       <span>Second Name</span>
                     </label>
                   </div>
 
-                  <label>
-                    <input
-                      required=""
-                      placeholder=""
-                      type="username"
-                      class="input"
-                      [(ngModel)]="registerRequest.username"
-                      name="username"
-                    />
-                    <span>Username</span>
-                  </label>
-
-                  <label>
-                    <input
-                      required=""
-                      placeholder=""
-                      type="whatsappNumber"
-                      class="input"
-                      [(ngModel)]="registerRequest.whatsappNumber"
-                      name="whatsappNumber"
-                    />
-                    <span>Whatsapp Number</span>
-                  </label>
-
                   <div class="flex">
                     <label>
-                      <span>Church</span>
+                      <span>Role</span>
                       <select
                         required=""
                         class="input"
-                        [(ngModel)]="registerRequest.churchName"
-                        name="churchName"
+                        [(ngModel)]="registerRequest.userRole"
+                        name="zionType"
                       >
                         <option value="" disabled selected hidden>
-                          Select Church Name
+                          Select Role
                         </option>
-                        <option
-                          *ngFor="let church of availableChurchNames"
-                          [ngValue]="church.churchName"
-                        >
-                          {{ church.churchName }}
-                        </option>
+                        <option value="residents">Residents</option>
+                        <option value="businesses">Businesses</option>
+                        <option value="waste_management_staff">Waste management staff</option>
                       </select>
                     </label>
+                    
 
                     <label>
                       <span>Gender</span>
@@ -100,57 +74,6 @@
                       </select>
                     </label>
                   </div>
-
-                  <div class="flex">
-                    <label>
-                      <span>Province</span>
-                      <select
-                        required=""
-                        class="input"
-                        [(ngModel)]="registerRequest.province"
-                        name="province"
-                      >
-                        <option value="" disabled selected hidden>
-                          Select Province
-                        </option>
-                        <option
-                          *ngFor="let province of availableProvinces"
-                          [ngValue]="province.province"
-                        >
-                          {{ province.province }}
-                        </option>
-                      </select>
-                    </label>
-
-                    <label>
-                      <span>ZionType</span>
-                      <select
-                        required=""
-                        class="input"
-                        [(ngModel)]="registerRequest.zionType"
-                        name="zionType"
-                      >
-                        <option value="" disabled selected hidden>
-                          Select Zion Type
-                        </option>
-                        <option value="Sgege">Sgege</option>
-                        <option value="Chorus">Chorus</option>
-                        <option value="Khalanga">Khalanga</option>
-                      </select>
-                    </label>
-                  </div>
-
-                  <label *ngIf="registerRequest.churchName === 'NOT_AVAILABLE'">
-                    <input
-                      required=""
-                      placeholder=""
-                      type="enterChurchName"
-                      class="input"
-                      [(ngModel)]="registerRequest.enterChurchName"
-                      name="enterChurchName"
-                    />
-                    <span>Enter Church Name</span>
-                  </label>
 
                   <label>
                     <input
@@ -200,7 +123,7 @@
               <div
                 class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
               >
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/u02fUMjp0a8?si=erIH800JHJTNZ_sy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              
               </div>
             </div>
           </div>
