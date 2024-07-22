@@ -22,6 +22,7 @@ import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { WasteComponent } from './pages/waste/waste.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { RecyclingLocationComponent } from './pages/recycling-location/recycling-location.component';
 
 
 
@@ -37,6 +38,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     LoginLayoutComponent,
     WasteComponent,
     ProfileComponent,
+    RecyclingLocationComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,BrowserAnimationsModule,MatSidenavModule],

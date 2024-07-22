@@ -1,0 +1,129 @@
+<div>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab === 'createLocation'" (click)="selectTab('createLocation')">Create Location</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab === 'locationList'" (click)="selectTab('locationList')">Location List</a>
+      </li>
+    </ul>
+  
+    <div [ngClass]="{'d-block': activeTab === 'createLocation', 'd-none': activeTab !== 'createLocation'}">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="type">Type</label>
+            <input type="text" class="form-control is-valid" id="type" placeholder="Type" [(ngModel)]="type" name="type" required>
+            <div class="valid-feedback">
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="quantity">Location</label>
+            <input type="text" class="form-control is-valid" id="quantity" placeholder="location" [(ngModel)]="location" name="quantity" required>
+            <div class="valid-feedback">
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="userRole">Availability</label>
+            <input type="text" class="form-control is-valid" id="userRole" placeholder="availability" [(ngModel)]="availability" name="userRole" required>
+            <div class="valid-feedback">
+            </div>
+          </div>
+        </div>
+        
+        <button class="btn btn-primary" type="submit">Create</button>
+      </form>
+    </div>
+  
+    <div [ngClass]="{'d-block': activeTab === 'locationList', 'd-none': activeTab !== 'locationList'}">
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+      
+      <div *ngIf="locationRecored.length > 0">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Location</th>
+              <th>ID</th>
+              <th>Date</th>
+              <th>User Role</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let record of locationRecored">
+              <td>{{ record.type }}</td>
+              <td>{{ record.location }}</td>
+              <td>#{{ record.id }}</td>
+              <td>{{ record.date | date:'short' }}</td>
+              <td>
+                <span [ngClass]="{'successful': record.availability === 'Successful', 'pending': record.availability === 'Pending'}">{{ record.availability }}</span>
+              </td>
+              <td>
+                <a href="#modalColor" data-target-color="bluegray" data-toggle="modal" class="btn btn-default toggler-button" (click)="selectRecord(record)">
+                  <i class="mdi mdi-pencil font-size-24 align-middle"></i>
+                </a>
+              </td>
+              <td>
+                <!-- <button (click)="deleteWaste(record.id)">Delete</button> -->
+                <a href="javascript:void(0);" class="delete-item" (click)="deleteLocation(record.id)">
+                  <i class="mdi mdi-trash-can-outline align-middle font-size-16 text-danger"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="locationRecored.length === 0 && !errorMessage">
+        <p>No waste records found.</p>
+      </div>
+          
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <div class="modal fade" data-modal-color="" id="modalColor" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content custom-modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Update Status</h4>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmit1()">
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="type">Type</label>
+                <input type="text" class="form-control is-valid" id="type" placeholder="Type" [(ngModel)]="type" name="type" required>
+                <div class="valid-feedback"></div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="quantity">Quantity</label>
+                <input type="text" class="form-control is-valid" id="quantity" placeholder="Quantity" [(ngModel)]="location" name="quantity" required>
+                <div class="valid-feedback"></div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="userRole">Role</label>
+                <input type="text" class="form-control is-valid" id="userRole" placeholder="Role" [(ngModel)]="availability" name="userRole" required>
+                <div class="valid-feedback"></div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="date">Date</label>
+                <input type="text" class="form-control is-valid" id="date" placeholder="Date" [(ngModel)]="date" name="date" required>
+                <div class="valid-feedback"></div>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Edit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
