@@ -14,9 +14,13 @@
           
           <li *ngIf="isIndividualAndBusiness()"><a routerLink="/waste">Create Waste</a></li>
 
-          <li *ngIf="isWasteManagementStaff()"><a routerLink="/recycling">Create Location</a></li>
+          <li *ngIf="isWasteManagementStaff()"><a routerLink="/recycling" >Create Location</a></li>
 
-        
+          <li *ngIf="isWasteManagementStaff()"><a routerLink="/tracking" >Tracking</a></li>
+
+          
+
+          <li><a routerLink="/login"(click)="logout()">Logout</a></li>
         </ul>
         <div class="footer">
         </div>

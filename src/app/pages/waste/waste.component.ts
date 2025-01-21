@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { RecyclingRequest } from 'src/app/models/recycling-request';
 import { UpdateWasteRequest, WasteRequest } from 'src/app/models/waste-request';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { RecyclingService } from 'src/app/services/recycling.service';
 import { WasteService } from 'src/app/services/waste.service';
 
 @Component({
@@ -20,50 +22,64 @@ export class WasteComponent {
   quantity: string = '';
   userRole: string = '';
   date: string = '';
-
-
+  locations: string[] = [];  // This will hold the available locations
+  location: string = '';     // This will hold the selected location
+  dayOfRecycling: string = '';
 
   selectTab(tab: string) {
     this.activeTab = tab;
   }
 
-  constructor(private wasteService: WasteService,private authenticatiservice: AuthenticationService) {}
+  constructor(private wasteService: WasteService, private authenticatiservice: AuthenticationService, private recycling: RecyclingService) {}
 
   ngOnInit(): void {
     this.loadWasteRecords();
+    this.getRecyclingBinLocations();
   }
 
- 
-
+  getRecyclingBinLocations(): void {
+    this.recycling.getAllRecyclingList().subscribe(
+      (data: RecyclingRequest[]) => {
+        // Extract the locations from the API response
+        this.locations = data.map(bin => bin.location);  // Set available locations to the dropdown
+      },
+      (error) => {
+        console.error('Error fetching recycling bin locations', error);
+      }
+    );
+  }
 
   onSubmit(): void {
     const userId = this.authenticatiservice.getUserId();
-    console.error('User ID not found in localStorage');
-
     if (!userId) {
       console.error('User ID not found in localStorage');
       return;
     }
 
-    console.log('User ID:', userId); 
+    console.log('User ID:', userId);
+
+    // Construct the request object with the selected location and day
     const wasteRequest: WasteRequest = {
       userId: userId,
       type: this.type,
       quantity: this.quantity,
-      userRole: this.userRole
+      userRole: this.userRole,
+      location: this.location,  // Selected location
+      dayOfRecycling: this.dayOfRecycling           // Selected day
     };
-    
 
     this.wasteService.createWaste(wasteRequest).subscribe(
       response => {
         console.log('Waste record created successfully', response);
-        
+        alert('Waste record created successfully!');
+      location.reload();
       },
       error => {
         console.error('Error creating waste record', error);
       }
     );
   }
+  
 
 
   loadWasteRecords(): void {
@@ -153,5 +169,18 @@ export class WasteComponent {
       }
     );
   }
+
+
+  // getRecyclingBinLocations(): void {
+  //   this.recycling.getAllRecyclingList().subscribe(
+  //     (data: RecyclingRequest[]) => {
+  //       // Extract the location names from the response data
+  //       this.locations = data.map(bin => bin.location);
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching recycling bin locations', error);
+  //     }
+  //   );
+  // }
   
 }

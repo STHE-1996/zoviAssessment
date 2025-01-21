@@ -33,4 +33,22 @@ export class WasteService {
     return this.http.delete(`${this.baseUrl}/deleteWaste/${userId}/${wasteId}`);
   }
 
+  getAllWasteRecordsForAllUsers(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/getAllWasteForStaff`);
+  }
+
+
+  updateWasteStatus(id: string, status: string): Observable<any> {
+    const body = {
+      id: id,
+      status: status
+    };
+    return this.http.put(`${this.baseUrl}/updateStatus`, body, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
+
 }

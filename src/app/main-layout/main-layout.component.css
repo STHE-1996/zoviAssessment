@@ -69,7 +69,8 @@
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 3px rgba(145, 37, 37, 0.1);
+    color :#109928
   }
   
   .navbar-btn {
@@ -93,9 +94,9 @@
   #sidebar {
     min-width: 300px;
     max-width: 300px;
-    background-color: rgba(10, 238, 227, 0.171);
-    border:2px solid rgb(1, 235, 252) ;
-    color: #3402ff;
+    background-color: #abf9b9;
+    border:2px solid #109928 ;
+    color: #109928;
     transition: all 0.3s;
   }
 
@@ -125,7 +126,7 @@
   #sidebar ul li a {
     padding: 10px 0;
     display: block;
-    color: rgba(52, 9, 247, 0.8);
+    color: #109928;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   #sidebar ul li.active > a {
@@ -186,3 +187,53 @@
     color: rgba(255, 255, 255, 0.5);
   }
   
+
+
+  /* Sidebar link styles */
+#sidebar ul li a {
+  padding: 10px 20px;
+  display: block;
+  color: #109928;
+  border: 2px solid transparent; /* Initially transparent border */
+  border-radius: 4px; /* Optional: rounded corners */
+  margin-bottom: 5px; /* Space between links */
+  font-weight: bold; /* Make the text bold */
+  text-decoration: none; /* Remove underline */
+  transition: all 0.3s ease;
+}
+
+/* Active link */
+#sidebar ul li.active > a {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary); /* Border color when active */
+}
+
+/* Hover effect */
+#sidebar ul li a:hover, #sidebar ul li a:focus {
+  text-decoration: none; /* Ensure no underline on hover */
+  border-color: var(--primary); /* Border color on hover */
+  background-color: rgba(248, 183, 57, 0.1); /* Light background on hover */
+  color: var(--primary); /* Color on hover */
+}
+
+/* Collapsed submenu link styles */
+#sidebar ul ul li a {
+  padding-left: 30px; /* Indentation for nested links */
+  font-size: 14px;
+}
+
+/* Optional: Style for the dropdown arrows */
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+/* Optional: Adjust active state for collapsed submenu */
+#sidebar ul li.active > a {
+  background-color: rgba(248, 183, 57, 0.1); /* Light background when active */
+  color: var(--primary);
+}

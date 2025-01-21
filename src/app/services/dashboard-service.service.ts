@@ -12,4 +12,8 @@ export class DashboardServiceService {
   getGenderCounts(): Observable<{ maleCount: number, femaleCount: number }> {
     return this.http.get<{ maleCount: number, femaleCount: number }>(`${this.baseUrl}/counts`);
   }
+
+  getAllWasteRecords(userId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/GetAllWaste/${userId}`);
+  }
 }

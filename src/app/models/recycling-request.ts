@@ -12,6 +12,8 @@ export interface RecyclingRequest {
     // }
   }
 
+ 
+
 
   export class UpdateLocationRequest {
     userId: string;

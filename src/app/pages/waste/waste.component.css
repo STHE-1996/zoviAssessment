@@ -36,10 +36,40 @@
     position: absolute;
     bottom: 60px;
     right: 0;
-    background-color: #007bff;
+    background-color: #109928;
     color: #fff;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  color: black; /* Text color */
+}
+
+.badge-yellow {
+  background-color: yellow;
+}
+
+.badge-green {
+  background-color: green;
+}
+
+/* Custom active tab color */
+.active-tab {
+  background-color: #109928;
+  color: white !important; /* To ensure the text is visible against the background */
+  border-color: #109928; /* Optional: if you want the border color to match the background */
+}
+
+.nav-link {
+  color: #000000; /* Default color for inactive tabs */
+}
+
+.nav-link.active-tab {
+  color: white !important; /* Ensure active tab text is white */
 }
 

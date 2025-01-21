@@ -10,6 +10,7 @@ import {
   LoginRequest,
  
   RegisterRequest,
+  UpdatePasswordRequest,
   
 } from '../models/register-request';
 import {
@@ -91,14 +92,13 @@ export class AuthenticationService {
     alert(errorMessage);
   }
 
-  sendOTP(username: string, channel: string): Observable<string | null> {
+  sendOTP(email: string): Observable<string | null> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
 
     const payload = {
-      whatsappNumber: username,
-      channelType: channel,
+      email: email,
     };
 
     return this.http
@@ -137,5 +137,21 @@ export class AuthenticationService {
   getUser(userId: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/User/${userId}`);
   }
+  
+  updatePassword(request: UpdatePasswordRequest): Observable<any> {
+    const url = `${this.baseUrl}/UpdatePassword`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.post<any>(url, request, { headers }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error updating password', error);
+        return throwError(error);
+      })
+    );
+  }
+
+
   
 }

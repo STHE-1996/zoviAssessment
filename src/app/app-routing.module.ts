@@ -9,6 +9,10 @@ import { WasteComponent } from './pages/waste/waste.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RecyclingLocationComponent } from './pages/recycling-location/recycling-location.component';
 import { RoleGuard } from './guards/role.guard';
+import { VerificationComponent } from './pages/verification/verification.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { TractWasteCollactionComponent } from './pages/tract-waste-collaction/tract-waste-collaction.component';
 
 
 const routes: Routes = [
@@ -17,6 +21,10 @@ const routes: Routes = [
     component: LoginLayoutComponent,
     children: [
       { path: 'login', component: LoginComponent },
+      { path: 'verification', component: VerificationComponent },
+      { path: 'forgotPassword', component: ForgotPasswordComponent },
+      { path: 'updatePassword', component: UpdatePasswordComponent },
+      
       { path: 'register', component: RegisterComponent },
       { path: '', redirectTo: 'login', pathMatch: 'full' } // Redirect root to login
     ]
@@ -30,6 +38,9 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       {path:'recycling', component: RecyclingLocationComponent, canActivate: [RoleGuard],
         data: { expectedRole: 'waste_management_staff' }},
+        {path:'tracking', component: TractWasteCollactionComponent, canActivate: [RoleGuard],
+          data: { expectedRole: 'waste_management_staff' }},
+        
       { path: '', redirectTo: 'dash', pathMatch: 'full' } // Redirect root to dash within MainLayout
     ]
   },

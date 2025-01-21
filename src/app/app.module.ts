@@ -23,6 +23,8 @@ import { WasteComponent } from './pages/waste/waste.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RecyclingLocationComponent } from './pages/recycling-location/recycling-location.component';
+import { VerificationComponent } from './pages/verification/verification.component';
+import { TractWasteCollactionComponent } from './pages/tract-waste-collaction/tract-waste-collaction.component';
 
 
 
@@ -39,6 +41,8 @@ import { RecyclingLocationComponent } from './pages/recycling-location/recycling
     WasteComponent,
     ProfileComponent,
     RecyclingLocationComponent,
+    VerificationComponent,
+    TractWasteCollactionComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,BrowserAnimationsModule,MatSidenavModule],

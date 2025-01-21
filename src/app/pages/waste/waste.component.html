@@ -30,8 +30,36 @@
             </div>
           </div>
         </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="location">Location</label>
+            <select class="form-control is-valid" id="location" [(ngModel)]="location" name="location" required>
+              <option value="">Select Location</option>
+              <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+            </select>
+            <div class="valid-feedback"></div>
+          </div>
+    
+    
+          <div class="col-md-4 mb-3">
+            <label for="days">Days</label>
+            <select class="form-control is-valid" id="days" [(ngModel)]="dayOfRecycling" name="days" required>
+              <option value="">Select Day</option>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+            </select>
+            <div class="valid-feedback">
+            </div>
+          </div>
+        </div>
         
-        <button class="btn btn-primary" type="submit">Create</button>
+        <button class="btn btn-primary" type="submit" style="background-color: #109928; border-color: #109928;">
+          Create
+        </button>
+        
       </form>
     </div>
   
@@ -47,7 +75,7 @@
               <th>Type</th>
               <th>Quantity</th>
               <th>ID</th>
-              <th>Date</th>
+              <th>Status</th>
               <th>User Role</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -58,7 +86,16 @@
               <td>{{ record.type }}</td>
               <td>{{ record.quantity }}</td>
               <td>#{{ record.id }}</td>
-              <td>{{ record.date | date:'short' }}</td>
+              <td>
+                <span class="badge" [ngClass]="{
+                    'badge-yellow': record.status === 'false', 
+                    'badge-green': record.status === 'true'
+                  }">
+                  {{ record.status === 'false' ? 'Unpick up' : (record.status === 'true' ? 'Picked up' : record.status) }}
+                </span>
+              </td>
+              
+              
               <td>
                 <span [ngClass]="{'successful': record.userRole === 'Successful', 'pending': record.userRole === 'Pending'}">{{ record.userRole }}</span>
               </td>
@@ -90,11 +127,15 @@
 
 
 
-  <div class="modal fade" data-modal-color="" id="modalColor" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="modalColor" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content custom-modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Update Status</h4>
+          <!-- Close button -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body">
           <form (ngSubmit)="onSubmit1()">
@@ -126,4 +167,5 @@
       </div>
     </div>
   </div>
+  
   

@@ -33,4 +33,9 @@ export class RecyclingService {
   deleteLocationRecord(userId: string, recyclingId: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/deleteRecyclingLocation/${userId}/${recyclingId}`);
   }
+
+  getAllRecyclingList(): Observable<UpdateLocationRequest[]> {
+    return this.http.get<UpdateLocationRequest[]>(`${this.baseUrl}/getAllRecyclingList`);
+  }
+
 }

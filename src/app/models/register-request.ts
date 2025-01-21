@@ -10,6 +10,12 @@ export interface RegisterRequest {
 
 
 
+export interface UpdatePasswordRequest{
+  email: string;
+  otpPin: string;
+  newPassword: string;
+  confirmNewPassword: string;
+}
 
 
 export interface Verification {

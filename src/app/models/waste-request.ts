@@ -3,12 +3,16 @@ export class WasteRequest {
     type: string;
     quantity: string;
     userRole: string;
+    location: string;
+    dayOfRecycling: string;
   
-    constructor(userId: string, type: string, quantity: string, userRole: string) {
+    constructor(userId: string, type: string, quantity: string, userRole: string, location: string,  dayOfRecycling: string) {
       this.userId = userId;
       this.type = type;
       this.quantity = quantity;
       this.userRole = userRole;
+      this.location = location;
+      this.dayOfRecycling = dayOfRecycling;
     }
   }
 

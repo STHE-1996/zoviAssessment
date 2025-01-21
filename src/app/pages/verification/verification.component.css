@@ -1,0 +1,76 @@
+.form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 350px;
+    background-color: #fff;
+    border: 2px solid #109928;
+    border-radius: 12px;
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .message {
+    color: #a3a3a3;
+    font-size: 14px;
+    margin-top: 4px;
+    text-align: center;
+  }
+  
+  .inputs {
+    margin-top: 10px;
+  }
+  
+  .inputs input {
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    border: none;
+    border-bottom: 1.5px solid #d2d2d2;
+    margin: 0 10px;
+  }
+  
+  .inputs input:focus {
+    border-bottom: 1.5px solidrgb(1, 235, 252);
+   
+    outline: none;
+  }
+  
+  .action {
+    margin-top: 24px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #109928;
+    color: white;
+    cursor: pointer;
+    align-self: end;
+  }
+  
+  .verification-message {
+    color: #ff0000; /* Red color for error messages */
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .collapse-image {
+      display: none; /* Hide the image on smaller screens */
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .col-md-10 {
+      max-width: 100%; /* Allow the form to take full width on smaller screens */
+    }
+  }
+  
+  
+  
+  

@@ -3,8 +3,8 @@
   flex-direction: column;
   gap: 10px;
   max-width: 350px;
-  background-color: rgba(10, 238, 227, 0.171);
-  border:2px solid rgb(1, 235, 252);
+  background-color: #fff;
+  border:2px solid #109928;
   padding: 20px;
   border-radius: 20px;
   position: relative;
@@ -104,13 +104,13 @@
 }
 
 .form label .input:valid + span {
-  color: rgb(1, 235, 252);
+  color: #109928;
 }
 
 .submit {
   border: none;
   outline: none;
-  background-color: rgb(1, 235, 252);
+  background-color: #109928;
   padding: 10px;
   border-radius: 10px;
   color: #fff;

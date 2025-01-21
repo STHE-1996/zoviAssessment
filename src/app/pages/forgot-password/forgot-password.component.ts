@@ -7,12 +7,11 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./forgot-password.component.css'],
 })
 export class ForgotPasswordComponent {
-  username: string;
-  selectedChannel: string;
+  email: string;
+ 
 
   constructor(private authService: AuthenticationService) {
-    this.username = '';
-    this.selectedChannel = '';
+    this.email = '';
   }
 
   loading: boolean = false;
@@ -20,9 +19,9 @@ export class ForgotPasswordComponent {
   sendOTP() {
     this.loading = true;
     // Assuming you have proper validation for the username and channel
-    if (this.username && this.selectedChannel) {
+    if (this.email) {
       // Call the service to send OTP
-      this.authService.sendOTP(this.username, this.selectedChannel).subscribe(
+      this.authService.sendOTP(this.email).subscribe(
         (message) => {
           if (message) {
             alert(message);
