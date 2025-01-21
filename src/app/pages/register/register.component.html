@@ -91,7 +91,7 @@
                     <input
                       required=""
                       placeholder=""
-                      type="password"
+                      [type]="passwordFieldType"
                       class="input"
                       [(ngModel)]="registerRequest.password"
                       name="password"
@@ -102,13 +102,24 @@
                     <input
                       required=""
                       placeholder=""
-                      type="password"
+                      [type]="passwordFieldType"
                       class="input"
                       [(ngModel)]="registerRequest.confirmPassword"
                       name="confirmPassword"
                     />
                     <span>Confirm password</span>
                   </label>
+                  <div class="form-check">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="showPassword"
+                        (change)="togglePasswordVisibility()"
+                    />
+                    <label class="form-check-label" for="showPassword">
+                        Show password
+                    </label>
+                </div>
                   <form class="form" (ngSubmit)="registerUser()">
                     <button class="submit" [disabled]="loading">
                       <span *ngIf="!loading">Register</span>

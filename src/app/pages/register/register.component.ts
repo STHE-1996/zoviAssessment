@@ -30,6 +30,7 @@ export class RegisterComponent implements OnInit {
 
   
   loading: boolean = false;
+  passwordFieldType: string = 'password';
 
   registerUser() {
     this.loading = true;
@@ -50,6 +51,10 @@ export class RegisterComponent implements OnInit {
     ).add(() => {
       this.loading = false; 
     });
+  }
+
+  togglePasswordVisibility() {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 }
 

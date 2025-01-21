@@ -58,27 +58,27 @@ export class DashComponentimplements implements AfterViewInit {
     
       // Initialize data for the chart
       const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const pickedData = new Array(6).fill(0);  // Array for "Picked" data, initialized to 0
-    const notPickedData = new Array(6).fill(0);  // Array for "Not Picked" data, initialized to 0
+    const pickedData = new Array(6).fill(0);  
+    const notPickedData = new Array(6).fill(0); 
 
     // Map waste records to the chart data
     this.wasteRecords.forEach((record: any) => {
-      console.log('Processing Record:', record);  // Debug log to check the record
+      console.log('Processing Record:', record); 
 
       if (record.dayOfRecycling === null || !daysOfWeek.includes(record.dayOfRecycling)) {
         console.log('Skipping invalid or null dayOfRecycling for record:', record);
-        return;  // Skip invalid or null dayOfRecycling
+        return;  
       }
 
-      const dayIndex = daysOfWeek.indexOf(record.dayOfRecycling);  // Find the day index
-      console.log(`Day Index for ${record.dayOfRecycling}:`, dayIndex);  // Debug log to check the day index
-      const quantity = parseInt(record.quantity, 10);  // Ensure quantity is parsed as an integer
-      console.log('Parsed Quantity:', quantity);  // Debug log to check the quantity
+      const dayIndex = daysOfWeek.indexOf(record.dayOfRecycling);  
+      console.log(`Day Index for ${record.dayOfRecycling}:`, dayIndex);
+      const quantity = parseInt(record.quantity, 10);  
+      console.log('Parsed Quantity:', quantity);  
 
-      if (record.status === 'true') {  // If the record is "Picked"
-        pickedData[dayIndex] += quantity;  // Add the quantity to the picked data
-      } else {  // If the record is "Not Picked"
-        notPickedData[dayIndex] += quantity;  // Add the quantity to the not picked data
+      if (record.status === 'true') {  
+        pickedData[dayIndex] += quantity;  
+      } else { 
+        notPickedData[dayIndex] += quantity; 
       }
     });
 
@@ -96,18 +96,18 @@ export class DashComponentimplements implements AfterViewInit {
     this.chart = new Chart(ctx2, {
       type: 'bar',
       data: {
-        labels: daysOfWeek,  // Labels for each day of the week
+        labels: daysOfWeek,  
         datasets: [
           {
             label: 'Picked',
-            data: pickedData,  // Populated "Picked" data
+            data: pickedData, 
             backgroundColor: '#109928',
             borderColor: 'rgba(0, 0, 62, 0.8)',
             borderWidth: 1
           },
           {
             label: 'Not Picked',
-            data: notPickedData,  // Populated "Not Picked" data
+            data: notPickedData,  
             backgroundColor: 'rgb(1, 235, 252)',
             borderColor: 'rgba(126, 3, 17, 0.8)',
             borderWidth: 1
@@ -197,7 +197,7 @@ export class DashComponentimplements implements AfterViewInit {
       new Chart(ctx3, {
         type: 'pie',
         data: {
-          labels: ['Boys', 'Girls'],
+          labels: ['Male', 'Female'],
           datasets: [{
             label: '',
             data: [maleCount, femaleCount],

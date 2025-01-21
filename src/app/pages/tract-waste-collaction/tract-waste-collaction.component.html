@@ -12,7 +12,7 @@
           <th>Status</th>
           <th>User Role</th>
           <th>Edit</th>
-          <th>Actions</th> <!-- New column for the toggler -->
+          <th>Actions</th>
           <th>Delete</th>
         </tr>
       </thead>
@@ -26,7 +26,7 @@
                 'badge-yellow': record.status === 'false', 
                 'badge-green': record.status === 'true'
               }">
-              {{ record.status === 'false' ? 'Unpick up' : (record.status === 'true' ? 'Picked up' : record.status) }}
+              {{ record.status === 'false' ? 'Not picked' : (record.status === 'true' ? 'Picked up' : record.status) }}
             </span>
           </td>
           <td>

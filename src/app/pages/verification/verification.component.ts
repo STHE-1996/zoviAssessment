@@ -24,7 +24,7 @@ export class VerificationComponent {
     this.authService.verifyAccount(pin).subscribe(
       (response) => {
         // Handle successful verification response
-        alert(response.responseMessage);
+        alert("You have successfully verified your account");
         this.router.navigate(['/login']);
       },
       (error) => {

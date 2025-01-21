@@ -10,6 +10,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class LoginComponent {
   credentials: LoginRequest = { email: '', password: '' };
+  showPassword: boolean = false;
 
   constructor(private authService: AuthenticationService, private router: Router) {}
 
@@ -28,6 +29,10 @@ export class LoginComponent {
     ).add(() => {
       this.loading = false;
     });
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 }
 

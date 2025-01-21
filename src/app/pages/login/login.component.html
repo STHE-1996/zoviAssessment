@@ -29,6 +29,7 @@
                         placeholder="Enter Email"
                       />
                       <input
+                      [type]="showPassword ? 'text' : 'password'"
                       type="password"
                       id="password"
                       name="password"
@@ -37,6 +38,17 @@
                       class="input"
                       placeholder="Enter password"
                     />
+                    <div class="form-check">
+                      <input
+                          type="checkbox"
+                          class="form-check-input"
+                          id="showPassword"
+                          (change)="togglePasswordVisibility()"
+                      />
+                      <label class="form-check-label" for="showPassword">
+                          Show password
+                      </label>
+                  </div>
                     <p class="page-link">
                       <span class="page-link-label">
                         <a routerLink="/forgotPassword">Forgot Password?</a>
@@ -50,7 +62,6 @@
                         <app-loader [loading]="loading"></app-loader>
                       </ng-template>
                     </button>
-                    
                   </form>
                   
                   <p class="sign-up-label">

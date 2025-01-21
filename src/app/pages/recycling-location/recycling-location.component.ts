@@ -58,6 +58,8 @@ export class RecyclingLocationComponent {
     this.recycling.createLocation(recyclingRequest).subscribe(
       response => {
         console.log('Location record created successfully', response);
+        alert('Location record created successfully!');
+      location.reload();
       },
       error => {
         console.error('Error creating waste record', error);
