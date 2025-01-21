@@ -152,6 +152,8 @@ export class AuthenticationService {
     );
   }
 
-
+  getAllUsers() {
+    return this.http.get<any[]>(`${this.baseUrl}/getAllUser`);
+  }
   
 }

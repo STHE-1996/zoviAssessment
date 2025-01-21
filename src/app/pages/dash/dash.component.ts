@@ -1,5 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { RegisterRequest } from 'src/app/models/register-request';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DashboardServiceService } from 'src/app/services/dashboard-service.service';
 
 @Component({
@@ -12,8 +14,9 @@ export class DashComponentimplements implements AfterViewInit {
   wasteRecords: any[] = []; // Assuming wasteRecords is populated via an API call
   errorMessage: string | null = null;  // Add error message handling
   chart: Chart | null = null;
+  users: RegisterRequest[] = [];
 
-  constructor(private genderCountService: DashboardServiceService) {
+  constructor(private genderCountService: DashboardServiceService,private authService: AuthenticationService) {
     // Register Chart.js components
     Chart.register(...registerables);
   }
@@ -21,6 +24,15 @@ export class DashComponentimplements implements AfterViewInit {
   ngAfterViewInit(): void {
     this.initializeCharts();
     this.loadWasteRecords();
+    this.authService.getAllUsers().subscribe(
+      (data: any[]) => {
+        console.log(data); // Log the data to check if it's being fetched
+        this.users = data;
+      },
+      (error) => {
+        console.error('Error fetching users', error);
+      }
+    );
   }
 
   ngOnDestroy(): void {
@@ -28,6 +40,19 @@ export class DashComponentimplements implements AfterViewInit {
       this.chart.destroy();
     }
   }
+
+
+  // Users(): void {
+  //   // Fetch the list of users on component initialization
+  //   this.authService.getAllUsers().subscribe(
+  //     (data: any[]) => {
+  //       this.users = data;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching users', error);
+  //     }
+  //   );
+  // }
 
   loadWasteRecords(): void {
     const userId = localStorage.getItem('userId');
@@ -220,4 +245,7 @@ export class DashComponentimplements implements AfterViewInit {
       console.error('Canvas element for pie chart not found');
     }
   }
+
+
+
 }
