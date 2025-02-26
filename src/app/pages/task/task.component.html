@@ -1,25 +1,25 @@
 <div>
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link" [class.active]="activeTab === 'createWaste'" (click)="selectTab('createWaste')">Create Waste</a>
+        <a class="nav-link" [class.active]="activeTab === 'createTask'" (click)="selectTab('createTask')">Create Task</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [class.active]="activeTab === 'wasteList'" (click)="selectTab('wasteList')">Waste List</a>
+        <a class="nav-link" [class.active]="activeTab === 'taskList'" (click)="selectTab('taskList')">Task List</a>
       </li>
     </ul>
   
-    <div [ngClass]="{'d-block': activeTab === 'createWaste', 'd-none': activeTab !== 'createWaste'}">
+    <div [ngClass]="{'d-block': activeTab === 'createTask', 'd-none': activeTab !== 'createTask'}">
       <form (ngSubmit)="onSubmit()">
         <div class="form-row">
           <div class="col-md-4 mb-3">
-            <label for="type">Type</label>
-            <input type="text" class="form-control is-valid" id="type" placeholder="Type" [(ngModel)]="type" name="type" required>
+            <label for="type">Task Name</label>
+            <input type="text" class="form-control is-valid" id="type" placeholder="Task Name" [(ngModel)]="taskName" name="taskName" required>
             <div class="valid-feedback">
             </div>
           </div>
           <div class="col-md-4 mb-3">
-            <label for="quantity">Quantity</label>
-            <input type="text" class="form-control is-valid" id="quantity" placeholder="Quantity" [(ngModel)]="quantity" name="quantity" required>
+            <label for="quantity">Description</label>
+            <input type="text" class="form-control is-valid" id="description" placeholder="description" [(ngModel)]="description" name="description" required>
             <div class="valid-feedback">
             </div>
           </div>
@@ -32,27 +32,15 @@
         </div>
         <div class="form-row">
           <div class="col-md-4 mb-3">
-            <label for="location">Location</label>
-            <select class="form-control is-valid" id="location" [(ngModel)]="location" name="location" required>
-              <option value="">Select Location</option>
-              <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
-            </select>
+            <label for="startDate">Start Date</label>
+            <input type="date" class="form-control is-valid" id="startDate" [(ngModel)]="startDate" name="startDate" required />
             <div class="valid-feedback"></div>
           </div>
     
-    
           <div class="col-md-4 mb-3">
-            <label for="days">Days</label>
-            <select class="form-control is-valid" id="days" [(ngModel)]="dayOfRecycling" name="days" required>
-              <option value="">Select Day</option>
-              <option value="Monday">Monday</option>
-              <option value="Tuesday">Tuesday</option>
-              <option value="Wednesday">Wednesday</option>
-              <option value="Thursday">Thursday</option>
-              <option value="Friday">Friday</option>
-            </select>
-            <div class="valid-feedback">
-            </div>
+            <label for="dueDate">End Date</label>
+            <input type="date" class="form-control is-valid" id="dueDate" [(ngModel)]="dueDate1" name="dueDate1" required />
+            <div class="valid-feedback"></div>
           </div>
         </div>
         
@@ -63,18 +51,18 @@
       </form>
     </div>
   
-    <div [ngClass]="{'d-block': activeTab === 'wasteList', 'd-none': activeTab !== 'wasteList'}">
+    <div [ngClass]="{'d-block': activeTab === 'taskList', 'd-none': activeTab !== 'taskList'}">
       <div *ngIf="errorMessage" class="alert alert-danger">
         {{ errorMessage }}
       </div>
       
-      <div *ngIf="wasteRecords.length > 0">
+      <div *ngIf="taskRecords.length > 0">
         <table>
           <thead>
             <tr>
-              <th>Type</th>
-              <th>Quantity</th>
-              <th>ID</th>
+              <th>Task Name</th>
+              <th>Description</th>
+              <th>Created Date</th>
               <th>Status</th>
               <th>User Role</th>
               <th>Edit</th>
@@ -82,10 +70,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let record of wasteRecords">
-              <td>{{ record.type }}</td>
-              <td>{{ record.quantity }}</td>
-              <td>#{{ record.id }}</td>
+            <tr *ngFor="let record of taskRecords">
+              <td>{{ record.taskName }}</td>
+              <td>{{ record.description }}</td>
+              <td>{{ record.date }}</td>
               <td>
                 <span class="badge" [ngClass]="{
                     'badge-yellow': record.status === 'false', 
@@ -94,8 +82,6 @@
                   {{ record.status === 'false' ? 'Not picked' : (record.status === 'true' ? 'Picked up' : record.status) }}
                 </span>
               </td>
-              
-              
               <td>
                 <span [ngClass]="{'successful': record.userRole === 'Successful', 'pending': record.userRole === 'Pending'}">{{ record.userRole }}</span>
               </td>
@@ -105,8 +91,8 @@
                 </a>
               </td>
               <td>
-                <!-- <button (click)="deleteWaste(record.id)">Delete</button> -->
-                <a href="javascript:void(0);" class="delete-item" (click)="deleteWaste(record.id)">
+                <!-- <button (click)="deleteTask(record.id)">Delete</button> -->
+                <a href="javascript:void(0);" class="delete-item" (click)="deleteTask(record.id)">
                   <i class="mdi mdi-trash-can-outline align-middle font-size-16 text-danger"></i>
                 </a>
               </td>
@@ -114,17 +100,12 @@
           </tbody>
         </table>
       </div>
-      <div *ngIf="wasteRecords.length === 0 && !errorMessage">
-        <p>No waste records found.</p>
+      <div *ngIf="taskRecords.length === 0 && !errorMessage">
+        <p>No task records found.</p>
       </div>
           
     </div>
   </div>
-
-
-
-
-
 
 
   <div class="modal fade" id="modalColor" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
@@ -141,13 +122,13 @@
           <form (ngSubmit)="onSubmit1()">
             <div class="form-row">
               <div class="col-md-4 mb-3">
-                <label for="type">Type</label>
-                <input type="text" class="form-control is-valid" id="type" placeholder="Type" [(ngModel)]="type" name="type" required>
+                <label for="type">Task Name</label>
+                <input type="text" class="form-control is-valid" id="type" placeholder="Type" [(ngModel)]="taskName" name="taskName" required>
                 <div class="valid-feedback"></div>
               </div>
               <div class="col-md-4 mb-3">
-                <label for="quantity">Quantity</label>
-                <input type="text" class="form-control is-valid" id="quantity" placeholder="Quantity" [(ngModel)]="quantity" name="quantity" required>
+                <label for="quantity">Description</label>
+                <input type="text" class="form-control is-valid" id="quantity" placeholder="Quantity" [(ngModel)]="description" name="description" required>
                 <div class="valid-feedback"></div>
               </div>
               <div class="col-md-4 mb-3">
@@ -157,7 +138,7 @@
               </div>
               <div class="col-md-4 mb-3">
                 <label for="date">Date</label>
-                <input type="text" class="form-control is-valid" id="date" placeholder="Date" [(ngModel)]="date" name="date" required>
+                <input type="text" class="form-control is-valid" id="date" placeholder="Date" [(ngModel)]="dueDate" name="dueDate" required>
                 <div class="valid-feedback"></div>
               </div>
             </div>

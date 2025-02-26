@@ -19,12 +19,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
-import { WasteComponent } from './pages/waste/waste.component';
+
 import { AuthInterceptor } from './auth.interceptor';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { RecyclingLocationComponent } from './pages/recycling-location/recycling-location.component';
 import { VerificationComponent } from './pages/verification/verification.component';
-import { TractWasteCollactionComponent } from './pages/tract-waste-collaction/tract-waste-collaction.component';
+import { TaskComponent } from './pages/task/task.component';
 
 
 
@@ -38,11 +37,9 @@ import { TractWasteCollactionComponent } from './pages/tract-waste-collaction/tr
     UpdatePasswordComponent,
     MainLayoutComponent,
     LoginLayoutComponent,
-    WasteComponent,
     ProfileComponent,
-    RecyclingLocationComponent,
     VerificationComponent,
-    TractWasteCollactionComponent,
+    TaskComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,BrowserAnimationsModule,MatSidenavModule],

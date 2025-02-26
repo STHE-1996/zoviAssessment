@@ -1,7 +1,7 @@
 <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(https://firebasestorage.googleapis.com/v0/b/ziontimeline.appspot.com/o/enviro365_it_solutions_logo.jpeg?alt=media&token=0fc89dc3-ce37-4f1a-915d-c60c09d3111c);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="display: flex; justify-content: center; align-items: center; font-size: 2rem; font-weight: bold; color: #fff; background-color: #000; border-radius: 50%; width: 150px; height: 150px;">ZOVI</a>
         <ul class="list-unstyled components mb-5">
           <li class="active">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
@@ -12,7 +12,7 @@
           </li>
           <li><a routerLink="/dash">Dashboard</a></li>
           
-          <li *ngIf="isIndividualAndBusiness()"><a routerLink="/waste">Create Waste</a></li>
+          <li *ngIf="isIndividualAndBusiness()"><a routerLink="/task">Create Task</a></li>
 
           <li *ngIf="isWasteManagementStaff()"><a routerLink="/recycling" >Create Location</a></li>
 

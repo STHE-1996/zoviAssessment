@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RecyclingService } from './recycling.service';
+import { TasksService } from './tasks.service';
 
-describe('RecyclingService', () => {
-  let service: RecyclingService;
+describe('TasksService', () => {
+  let service: TasksService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RecyclingService);
+    service = TestBed.inject(TasksService);
   });
 
   it('should be created', () => {

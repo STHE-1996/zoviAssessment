@@ -11,12 +11,12 @@ localStorage: any;
   constructor(private authService: AuthenticationService) {}
   isWasteManagementStaff(): boolean {
     const role = localStorage.getItem('role');
-    return role === 'waste_management_staff';
+    return role === 'Management';
   }
 
   isIndividualAndBusiness(): boolean {
     const role = localStorage.getItem('role');
-    return role === 'residents' || role === 'businesses';
+    return role === 'Marketing' || role === 'IT'|| role === 'HR';
   }
   
   logout(): void {
