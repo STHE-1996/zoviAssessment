@@ -65,6 +65,8 @@
               <th>Created Date</th>
               <th>Status</th>
               <th>User Role</th>
+              <th>Start Date</th>
+              <th>End Date</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -73,7 +75,7 @@
             <tr *ngFor="let record of taskRecords">
               <td>{{ record.taskName }}</td>
               <td>{{ record.description }}</td>
-              <td>{{ record.date }}</td>
+              <td>{{ record.dueDate }}</td>
               <td>
                 <span class="badge" [ngClass]="{
                     'badge-yellow': record.status === 'false', 
@@ -85,6 +87,8 @@
               <td>
                 <span [ngClass]="{'successful': record.userRole === 'Successful', 'pending': record.userRole === 'Pending'}">{{ record.userRole }}</span>
               </td>
+              <td>{{ record.startDate }}</td>
+              <td>{{ record.date }}</td>
               <td>
                 <a href="#modalColor" data-target-color="bluegray" data-toggle="modal" class="btn btn-default toggler-button" (click)="selectRecord(record)">
                   <i class="mdi mdi-pencil font-size-24 align-middle"></i>
